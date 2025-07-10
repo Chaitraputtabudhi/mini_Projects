@@ -2,4 +2,8 @@ Backend\3.1 Express Server\node_modules
 Backend\2.4 QR Code Project\node_modules
 Backend\2.4 QR Code Project\package-lock.json
 Backend\3.1 Express Server\package-lock.json
-
+Backend\3.5 Secrets Project\node_modules
+Backend\3.5 Secrets Project\package-lock.json
+Backend\3.4 Middleware\node_modules
+Backend\3.4 Middleware\package-lock.json
+Backend\*\node_modules

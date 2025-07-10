@@ -14,6 +14,22 @@ app.get('/about',(req,res)=>{
     res.send('<h1>About Me</h1>');
 })
 
+app.post('/register',(req,res)=>{
+    res.sendStatus(201)
+})
+
+app.put('/user/chai',(req,res)=>{
+    res.sendStatus(200)
+})
+
+app.patch('/user/chai',(req,res)=>{
+    res.sendStatus(200)
+})
+
+app.delete('/user/chai',(req,res)=>{
+    res.sendStatus(200)
+})
+
 app.listen(port, () =>{
     console.log(`Server is running on port ${port}`);
 })
