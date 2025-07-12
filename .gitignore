@@ -7,3 +7,13 @@ Backend\3.5 Secrets Project\package-lock.json
 Backend\3.4 Middleware\node_modules
 Backend\3.4 Middleware\package-lock.json
 Backend\*\node_modules
+Backend/**/node_modules/
+Backend/**/package-lock.json
+
+# Ignore IDE/editor folders
+.vscode/
+.idea/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
