@@ -9,6 +9,8 @@ Backend\3.4 Middleware\package-lock.json
 Backend\*\node_modules
 Backend/**/node_modules/
 Backend/**/package-lock.json
+Blog_Capstone_Project/node_modules
+
 
 # Ignore IDE/editor folders
 .vscode/

@@ -1,0 +1,19 @@
+<%- include("partials/header.ejs") %>
+
+<main class="container">
+    <h1><%= post.title %></h1>
+    <p class="text-muted">By <%= post.author %> on <%= new Date(post.date).toLocaleDateString() %></p>
+    
+    <div class="post-content">
+        <p><%= post.content %></p>
+    </div>
+    <div class="post-actions">
+        <a href="/edit/<%= post.id %>" class="btn btn-secondary">Edit</a>
+        <form action="/delete/<%= post.id %>" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+
+</main>
+
+<%- include("partials/footer.ejs")  %>
