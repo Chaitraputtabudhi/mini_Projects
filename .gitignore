@@ -10,6 +10,10 @@ Backend\*\node_modules
 Backend/**/node_modules/
 Backend/**/package-lock.json
 Blog_Capstone_Project/node_modules
+Udemy/**/node_modules
+Udemy/**/package-lock.json
+Udemy\**\node_modules
+Udemy\**\package-lock.json
 
 
 # Ignore IDE/editor folders

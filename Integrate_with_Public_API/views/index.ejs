@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>Public API Integration</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Let's find something for you to do ✌️</h1>
+
+        <!-- form to choose the action to be performed -->
+        <form action="/" id="form" class="form" method="POST">
+            <select name="type" class="form-select">
+                <option value="" data-display="Select">Choose your action</option>
+                <option value="weather">Check Weather</option>
+                <option value="uv">Check UV %</option>
+                <option value="joke">Random Joke</option>
+                <option value="crypto">Crypto Price</option>
+            </select>
+            <input value="" name="lon" class="form-select" placeholder="longitude">
+            <input value="" name="lat" class="form-select" placeholder="latitude">
+
+            <button type="submit" class="form-submit">Go</button>
+        </form>
+        <section class="cards">
+            <% if (locals.data) { %>
+                <div class="card">
+                    <p><strong>Result:</strong>
+                        <%= data %>
+                    </p>
+                </div>
+                <% } %>
+            <% if (locals.error) { %>
+                <div class="tag-error">
+                    <p>
+                        <%= error %>
+                    </p>
+                </div>
+            <% } %>
+        </section>
+
+    </div>
+
+</body>
+
+</html>
