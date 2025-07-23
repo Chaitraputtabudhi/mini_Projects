@@ -1,33 +1,73 @@
 import express from "express";
 import bodyParser from "body-parser";
+import pg from "pg";
 
 const app = express();
 const port = 3000;
 
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "world",
+  password: "postgres123",
+  port: 5432
+})
+db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+
 let items = [
-  { id: 1, title: "Buy milk" },
-  { id: 2, title: "Finish homework" },
 ];
 
-app.get("/", (req, res) => {
-  res.render("index.ejs", {
-    listTitle: "Today",
-    listItems: items,
-  });
+app.get("/", async (req, res) => {
+  try {
+    const result = await db.query("select * from items order by id asc;");
+    items = result.rows;
+    res.render("index.ejs", {
+      listTitle: "Today",
+      listItems: items,
+    });
+  } catch (err) {
+    console.log(err);
+    alert("Error occured", err)
+  }
+
 });
 
-app.post("/add", (req, res) => {
-  const item = req.body.newItem;
-  items.push({ title: item });
-  res.redirect("/");
+app.post("/add", async (req, res) => {
+  try {
+    const item = req.body.newItem;
+    const result = await db.query("insert into items(title) values ($1);",[item]);
+    items.push({ title: item });
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
+
 });
 
-app.post("/edit", (req, res) => {});
+app.post("/edit", async(req, res) => {
+  const item_edit = req.body.updatedItemId;
+  const item_title = req.body.updatedItemTitle;
+  try{
+    await db.query("update items set title = ($1) where id = $2",[item_title,item_edit]);
+    res.redirect("/");
+  }catch(err){
+    console.log(err);
+  }
 
-app.post("/delete", (req, res) => {});
+});
+
+app.post("/delete", async(req, res) => { 
+  const id = req.body.deleteItemId
+  try{
+    await db.query("delete from items where id = $1",[id])
+    res.redirect("/")
+  }catch(err){
+    console.log(err);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
