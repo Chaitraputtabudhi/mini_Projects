@@ -24,3 +24,4 @@ Udemy\**\package-lock.json
 # Ignore OS files
 .DS_Store
 Thumbs.db
+.env
